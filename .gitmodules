@@ -1,30 +1,30 @@
-[submodule "pack/user/vim-commentary"]
-	path = pack/user/vim-commentary
+[submodule "plugin/vim-commentary"]
+	path = pack/user/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary
-[submodule "pack/user/vim-repeat"]
-	path = pack/user/vim-repeat
+[submodule "plugin/vim-repeat"]
+	path = pack/user/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat
-[submodule "pack/user/vim-surround"]
-	path = pack/user/vim-surround
+[submodule "plugin/vim-surround"]
+	path = pack/user/start/vim-surround
 	url = https://github.com/tpope/vim-surround
-[submodule "pack/user/vim-fugitive"]
-	path = pack/user/vim-fugitive
+[submodule "plugin/vim-fugitive"]
+	path = pack/user/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
-[submodule "pack/user/ctrlp.vim"]
-	path = pack/user/ctrlp.vim
+[submodule "plugin/ctrlp.vim"]
+	path = pack/user/start/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim
-[submodule "pack/user/vim-easy-align"]
-	path = pack/user/vim-easy-align
+[submodule "plugin/vim-easy-align"]
+	path = pack/user/start/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align
-[submodule "pack/user/vim-compile"]
-	path = pack/user/vim-compile
+[submodule "plugin/vim-compile"]
+	path = pack/user/start/vim-compile
 	url = https://github.com/marcs-feh/vim-compile
-[submodule "pack/user/vim-odin"]
-	path = pack/user/vim-odin
+[submodule "plugin/vim-odin"]
+	path = pack/user/start/vim-odin
 	url = https://github.com/marcs-feh/vim-odin
-[submodule "pack/user/vim-udark"]
-	path = pack/user/vim-udark
+[submodule "plugin/vim-udark"]
+	path = pack/user/start/vim-udark
 	url = https://github.com/marcs-feh/vim-udark
-[submodule "pack/user/nvim-treesitter"]
-	path = pack/user/nvim-treesitter
+[submodule "plugin/nvim-treesitter"]
+	path = pack/user/start/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter

@@ -22,6 +22,8 @@ local function map_key(mode, seq, cmd, options)
 	vim.keymap.set(mode, seq, cmd, options)
 end
 
+vim.cmd [[set runtimepath+='~/.config/pack/*/start/*']]
+
 set_options {
 	compatible = false,
 	tabstop = tab_size,
