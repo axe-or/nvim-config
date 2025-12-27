@@ -1,6 +1,4 @@
-local tab_size = 4
-local jk_esc = true
-
+---| Utilities |---
 local function set_options(t, scope)
 	if not scope then scope = "default" end
 	local opt_map = {
@@ -22,97 +20,107 @@ local function map_key(mode, seq, cmd, options)
 	vim.keymap.set(mode, seq, cmd, options)
 end
 
-set_options {
-	compatible = false,
-	tabstop = tab_size,
-	shiftwidth = tab_size,
-	backup = false,
-	hidden = true,
-	cmdheight = 1,
-	completeopt = { "menuone", "noselect" },
-	conceallevel = 0,
-	fileencoding = "utf-8",
-	hlsearch = false,
-	incsearch = true,
-	ignorecase = true,
-	mouse = "a",
-	pumheight = 10,
-	showmode = false,
-	showtabline = 2,
-	laststatus = 2,
-	smartcase = true,
-	splitbelow = true,
-	splitright = true,
-	swapfile = false,
-	timeoutlen = 800,
-	undofile = false,
-	updatetime = 300,
-	smartindent = true,
-	writebackup = false,
-	expandtab = false,
-	termguicolors = true,
-	cursorline = false,
-	number = true,
-	relativenumber = false,
-	numberwidth = 3,
-	signcolumn = "no",
-	wrap = false,
-	foldmethod = "indent",
-	foldlevelstart = 99,
-	scrolloff = 8,
-	sidescrolloff = 12,
-	background = "dark",
-}
+---| General Options |---
+do
+	local tab_size = 4
+	local jk_esc = true
 
-local netrw_options = {
-	keepdir = 0,
-	banner = 0,
-	hide = 1,
-	winsize = 30,
-}
+	set_options {
+		compatible = false,
+		tabstop = tab_size,
+		shiftwidth = tab_size,
+		backup = false,
+		hidden = true,
+		cmdheight = 1,
+		completeopt = { "menuone", "noselect" },
+		conceallevel = 0,
+		fileencoding = "utf-8",
+		hlsearch = false,
+		incsearch = true,
+		ignorecase = true,
+		mouse = "a",
+		pumheight = 10,
+		showmode = false,
+		showtabline = 2,
+		laststatus = 2,
+		smartcase = true,
+		splitbelow = true,
+		splitright = true,
+		swapfile = false,
+		timeoutlen = 800,
+		undofile = false,
+		updatetime = 300,
+		smartindent = true,
+		writebackup = false,
+		expandtab = false,
+		termguicolors = true,
+		cursorline = false,
+		number = true,
+		relativenumber = false,
+		numberwidth = 3,
+		signcolumn = "no",
+		wrap = false,
+		foldmethod = "indent",
+		foldlevelstart = 99,
+		scrolloff = 8,
+		sidescrolloff = 12,
+		background = "dark",
+	}
 
-for name, value in pairs(netrw_options) do
-	vim.g["netrw_"..name] = value
+	-- Stop making line comments when pressing o, this abomination is required
+	-- because Vim's ftplugins are fucking retarded.
+	vim.cmd [[autocmd FileType * set formatoptions-=o]]
+
+	local netrw_options = {
+		keepdir = 0,
+		banner = 0,
+		hide = 1,
+		winsize = 30,
+	}
+
+	for name, value in pairs(netrw_options) do
+		vim.g["netrw_"..name] = value
+	end
 end
 
--- Stop making line comments when pressing o, this abomination is required
--- because Vim"s ftplugins are fucking retarded.
-vim.cmd [[autocmd FileType * set formatoptions-=o]]
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+---| Keybindings |---
+do
+	vim.g.mapleader = " "
+	vim.g.maplocalleader = " "
 
-map_key("", "<Space>", "<Nop>")
-map_key("", "Q", "<Nop>")
-map_key("", "K", "<Nop>")
+	map_key("", "<Space>", "<Nop>")
+	map_key("", "Q", "<Nop>")
+	map_key("", "K", "<Nop>")
 
-map_key("n", "<C-s>", ":w<CR>")
-map_key("i", "<C-s>", "<ESC>:w<CR>")
-map_key("n", "<C-k>", "<C-u>zz")
-map_key("n", "<C-j>", "<C-d>zz")
+	map_key("n", "<C-s>", ":w<CR>")
+	map_key("i", "<C-s>", "<ESC>:w<CR>")
+	map_key("n", "<C-k>", "<C-u>zz")
+	map_key("n", "<C-j>", "<C-d>zz")
 
-map_key("n", "Y", "y$")
-map_key("n", "D", "d$")
-map_key("n", "C", "c$")
-map_key("n", "<C-a>", ":normal ggVG<CR>")
+	map_key("n", "Y", "y$")
+	map_key("n", "D", "d$")
+	map_key("n", "C", "c$")
+	map_key("n", "<C-a>", ":normal ggVG<CR>")
 
-map_key("n", "L", ":bnext<CR>")
-map_key("n", "H", ":bprevious<CR>")
+	map_key("n", "L", ":bnext<CR>")
+	map_key("n", "H", ":bprevious<CR>")
 
-map_key("n", "<leader>n", ":enew<CR>")
-map_key("n", "<leader>q", ":close<CR>")
-map_key("n", "<leader>x", ":bdelete<CR>")
-map_key("n", "<leader>X", ":bdelete!<CR>")
-map_key("n", "<leader>l", ":noh<CR>:echo<CR>")
-map_key("n", "<leader>c", ":Commentary<CR>")
-map_key("v", "<leader>c", ":Commentary<CR>")
+	map_key("n", "<leader>n", ":enew<CR>")
+	map_key("n", "<leader>q", ":close<CR>")
+	map_key("n", "<leader>x", ":bdelete<CR>")
+	map_key("n", "<leader>X", ":bdelete!<CR>")
+	map_key("n", "<leader>l", ":noh<CR>:echo<CR>")
+	map_key("n", "<leader>c", ":Commentary<CR>")
+	map_key("v", "<leader>c", ":Commentary<CR>")
 
-map_key("n", "<leader>sh", ":split<CR>")
-map_key("n", "<leader>sv", ":vsplit<CR>")
+	map_key("n", "<leader>sh", ":split<CR>")
+	map_key("n", "<leader>sv", ":vsplit<CR>")
 
-map_key("n", "<C-o>", "<C-w>w")
-map_key("n", "<C-b>", ":Compile<CR>")
-map_key("n", "<C-c><C-b>", ":CompileSetCommands<CR>")
-map_key("n", "<C-c><C-t>", ":CompileTest<CR>")
+	map_key("n", "<C-o>", "<C-w>w")
+	map_key("n", "<C-b>", ":Compile<CR>")
+	map_key("n", "<C-c><C-b>", ":CompileSetCommands<CR>")
+	map_key("n", "<C-c><C-t>", ":CompileTest<CR>")
+end
 
 ---| Treesitter |---
 do
@@ -135,27 +143,41 @@ end
 
 ---| Multicursor |---
 do
-local mc = require "multicursor-nvim"
-mc.setup()
+	local mc = require "multicursor-nvim"
+	mc.setup()
 
-map_key("n", "<C-d>", function() mc.matchAddCursor(1) end)
-map_key("n", "<C-q>", mc.toggleCursor)
+	map_key({"n", "x"}, "<C-d>", function() mc.matchAddCursor(1) end)
+	map_key({"n", "x"}, "<C-q>", mc.toggleCursor)
 
--- Keymaps that only apply in multicursor mode
-mc.addKeymapLayer(function(layerSet)
-	layerSet("n", "<C-u>", mc.deleteCursor)
-	map_key("n", "<C-k>", function() mc.matchSkipCursor(1) end)
+	-- Keymaps that only apply in multicursor mode
+	mc.addKeymapLayer(function(layerSet)
+		layerSet("n", "<C-u>", mc.deleteCursor)
+		map_key("n", "<C-k>", function() mc.matchSkipCursor(1) end)
 
-	layerSet("n", "<ESC>", function()
-		if not mc.cursorsEnabled() then
-			mc.enableCursors()
-		else
-			mc.clearCursors()
-		end
+		layerSet("n", "<ESC>", function()
+			if not mc.cursorsEnabled() then
+				mc.enableCursors()
+			else
+				mc.clearCursors()
+			end
+		end)
 	end)
-end)
 
 end
 
+---| Neovide |---
+if vim.g.neovide then
+	local refresh_rate = 60
+	vim.o.guifont = "JetBrains Mono NL,Consolas:h10"
+	vim.g.neovide_position_animation_length = 0.1
+	vim.g.neovide_refresh_rate = refresh_rate
+	vim.g.neovide_scroll_animation_length = 0
+	vim.g.neovide_hide_mouse_when_typing = true
+	vim.g.neovide_cursor_short_animation_length = 0
+	vim.g.neovide_cursor_animation_length = (1.0 / refresh_rate) * 3
+	vim.g.neovide_cursor_trail_size = 0.25
+end
+
+---| Colorscheme |---
 vim.cmd [[ colorscheme udark ]]
 
