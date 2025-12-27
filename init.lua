@@ -2,14 +2,14 @@ local tab_size = 4
 local jk_esc = true
 
 local function set_options(t, scope)
-	if not scope then scope = 'default' end
+	if not scope then scope = "default" end
 	local opt_map = {
-		['default'] = 'opt',
-		['local']   = 'opt_local',
-		['global']  = 'opt_global',
+		["default"] = "opt",
+		["local"]   = "opt_local",
+		["global"]  = "opt_global",
 	}
 	local opt = opt_map[scope]
-	assert(opt, 'Unknown value for config scope')
+	assert(opt, "Unknown value for config scope")
 	for k, v in pairs(t) do
 		vim[opt][k] = v
 	end
@@ -22,8 +22,6 @@ local function map_key(mode, seq, cmd, options)
 	vim.keymap.set(mode, seq, cmd, options)
 end
 
-vim.cmd [[set runtimepath+='~/.config/pack/*/start/*']]
-
 set_options {
 	compatible = false,
 	tabstop = tab_size,
@@ -31,13 +29,13 @@ set_options {
 	backup = false,
 	hidden = true,
 	cmdheight = 1,
-	completeopt = { 'menuone', 'noselect' },
+	completeopt = { "menuone", "noselect" },
 	conceallevel = 0,
-	fileencoding = 'utf-8',
+	fileencoding = "utf-8",
 	hlsearch = false,
 	incsearch = true,
 	ignorecase = true,
-	mouse = 'a',
+	mouse = "a",
 	pumheight = 10,
 	showmode = false,
 	showtabline = 2,
@@ -57,13 +55,13 @@ set_options {
 	number = true,
 	relativenumber = false,
 	numberwidth = 3,
-	signcolumn = 'no',
+	signcolumn = "no",
 	wrap = false,
-	foldmethod = 'indent',
+	foldmethod = "indent",
 	foldlevelstart = 99,
 	scrolloff = 8,
 	sidescrolloff = 12,
-	background = 'dark',
+	background = "dark",
 }
 
 local netrw_options = {
@@ -74,63 +72,90 @@ local netrw_options = {
 }
 
 for name, value in pairs(netrw_options) do
-	vim.g['netrw_'..name] = value
+	vim.g["netrw_"..name] = value
 end
 
 -- Stop making line comments when pressing o, this abomination is required
--- because Vim's ftplugins are fucking retarded.
+-- because Vim"s ftplugins are fucking retarded.
 vim.cmd [[autocmd FileType * set formatoptions-=o]]
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 map_key("", "<Space>", "<Nop>")
 map_key("", "Q", "<Nop>")
 map_key("", "K", "<Nop>")
 
-map_key('n', '<C-s>', ':w<CR>')
-map_key('i', '<C-s>', '<ESC>:w<CR>')
-map_key('n', '<C-k>', '<C-u>zz')
-map_key('n', '<C-j>', '<C-d>zz')
+map_key("n", "<C-s>", ":w<CR>")
+map_key("i", "<C-s>", "<ESC>:w<CR>")
+map_key("n", "<C-k>", "<C-u>zz")
+map_key("n", "<C-j>", "<C-d>zz")
 
-map_key('n', 'Y', 'y$')
-map_key('n', 'D', 'd$')
-map_key('n', 'C', 'c$')
-map_key('n', '<C-a>', ':normal ggVG<CR>')
+map_key("n", "Y", "y$")
+map_key("n", "D", "d$")
+map_key("n", "C", "c$")
+map_key("n", "<C-a>", ":normal ggVG<CR>")
 
-map_key('n', 'L', ':bnext<CR>')
-map_key('n', 'H', ':bprevious<CR>')
+map_key("n", "L", ":bnext<CR>")
+map_key("n", "H", ":bprevious<CR>")
 
-map_key('n', '<leader>n', ':enew<CR>')
-map_key('n', '<leader>q', ':close<CR>')
-map_key('n', '<leader>x', ':bdelete<CR>')
-map_key('n', '<leader>X', ':bdelete!<CR>')
-map_key('n', '<leader>l', ':noh<CR>:echo<CR>')
-map_key('n', '<leader>c', ':Commentary<CR>')
-map_key('v', '<leader>c', ':Commentary<CR>')
+map_key("n", "<leader>n", ":enew<CR>")
+map_key("n", "<leader>q", ":close<CR>")
+map_key("n", "<leader>x", ":bdelete<CR>")
+map_key("n", "<leader>X", ":bdelete!<CR>")
+map_key("n", "<leader>l", ":noh<CR>:echo<CR>")
+map_key("n", "<leader>c", ":Commentary<CR>")
+map_key("v", "<leader>c", ":Commentary<CR>")
 
-map_key('n', '<leader>sh', ':split<CR>')
-map_key('n', '<leader>sv', ':vsplit<CR>')
+map_key("n", "<leader>sh", ":split<CR>")
+map_key("n", "<leader>sv", ":vsplit<CR>")
 
-map_key('n', '<C-o>', '<C-w>w')
-map_key('n', '<C-b>', ':Compile<CR>')
-map_key('n', '<C-c><C-b>', ':CompileSetCommands<CR>')
-map_key('n', '<C-c><C-t>', ':CompileTest<CR>')
+map_key("n", "<C-o>", "<C-w>w")
+map_key("n", "<C-b>", ":Compile<CR>")
+map_key("n", "<C-c><C-b>", ":CompileSetCommands<CR>")
+map_key("n", "<C-c><C-t>", ":CompileTest<CR>")
 
-require('nvim-treesitter.configs').setup {
-	sync_install = true, -- Enable if you have <8GB RAM, will take much longer to compile
-	ensure_installed = {},
+---| Treesitter |---
+do
+	require("nvim-treesitter.configs").setup {
+		sync_install = true, -- Enable if you have <8GB RAM, will take much longer to compile
+		ensure_installed = {},
 
-	ignore_install = {'phpdoc', 'javadoc', 'v'},
+		ignore_install = {"phpdoc", "javadoc", "v"},
 
-	highlight = {
-		enable = true,
-		additional_vim_regex_highlighting = false,
-	},
+		highlight = {
+			enable = true,
+			additional_vim_regex_highlighting = false,
+		},
 
-	indent = {
-		enable = true,
-	},
-}
+		indent = {
+			enable = true,
+		},
+	}
+end
+
+---| Multicursor |---
+do
+local mc = require "multicursor-nvim"
+mc.setup()
+
+map_key("n", "<C-d>", function() mc.matchAddCursor(1) end)
+map_key("n", "<C-q>", mc.toggleCursor)
+
+-- Keymaps that only apply in multicursor mode
+mc.addKeymapLayer(function(layerSet)
+	layerSet("n", "<C-u>", mc.deleteCursor)
+	map_key("n", "<C-k>", function() mc.matchSkipCursor(1) end)
+
+	layerSet("n", "<ESC>", function()
+		if not mc.cursorsEnabled() then
+			mc.enableCursors()
+		else
+			mc.clearCursors()
+		end
+	end)
+end)
+
+end
 
 vim.cmd [[ colorscheme udark ]]
 

@@ -28,3 +28,6 @@
 [submodule "plugin/nvim-treesitter"]
 	path = pack/user/start/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter
+[submodule "pack/user/start/multicursor.nvim"]
+	path = pack/user/start/multicursor
+	url = https://github.com/jake-stewart/multicursor.nvim
