@@ -1,8 +1,8 @@
 from os import walk
 from math import ceil
 import os.path as path
-from zipfile import ZipFile, ZIP_DEFLATED
-
+# from zipfile import ZipFile, ZIP_DEFLATED
+from tarfile import TarFile
 
 def exclude(s: str) -> bool:
     parts = s.split('/')
@@ -21,12 +21,12 @@ for (parent, _, files) in walk('pack'):
             to_archive.append(fullpath)
 
 archived = 0
-with ZipFile('dist.zip', 'w', compression=ZIP_DEFLATED) as f:
+with TarFile.open('dist.tgz', 'w:gz') as f:
     for file in to_archive:
         print(f'\r' + ' ' * 80 + '\r', end='', flush=True)
         p = ceil(archived/len(to_archive) * 100)
         print(f'Archiving {p}%', end='', flush=True)
-        f.write(file)
+        f.add(file)
         archived += 1
     print(f'\nDone ({len(to_archive)} files)')
 
