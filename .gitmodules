@@ -1,0 +1,30 @@
+[submodule "pack/user/vim-commentary"]
+	path = pack/user/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "pack/user/vim-repeat"]
+	path = pack/user/vim-repeat
+	url = https://github.com/tpope/vim-repeat
+[submodule "pack/user/vim-surround"]
+	path = pack/user/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "pack/user/vim-fugitive"]
+	path = pack/user/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "pack/user/ctrlp.vim"]
+	path = pack/user/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim
+[submodule "pack/user/vim-easy-align"]
+	path = pack/user/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align
+[submodule "pack/user/vim-compile"]
+	path = pack/user/vim-compile
+	url = https://github.com/marcs-feh/vim-compile
+[submodule "pack/user/vim-odin"]
+	path = pack/user/vim-odin
+	url = https://github.com/marcs-feh/vim-odin
+[submodule "pack/user/vim-udark"]
+	path = pack/user/vim-udark
+	url = https://github.com/marcs-feh/vim-udark
+[submodule "pack/user/nvim-treesitter"]
+	path = pack/user/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter
