@@ -16,9 +16,6 @@
 [submodule "plugin/vim-compile"]
 	path = pack/user/start/vim-compile
 	url = https://github.com/marcs-feh/vim-compile
-[submodule "plugin/vim-odin"]
-	path = pack/user/start/vim-odin
-	url = https://github.com/marcs-feh/vim-odin
 [submodule "plugin/vim-udark"]
 	path = pack/user/start/vim-udark
 	url = https://github.com/marcs-feh/vim-udark
