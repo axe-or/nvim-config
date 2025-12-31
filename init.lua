@@ -168,13 +168,13 @@ end
 ---| Neovide |---
 if vim.g.neovide then
 	local refresh_rate = 60
-	vim.o.guifont = "JetBrains Mono NL,Consolas:h10"
+	vim.o.guifont = "JetBrains Mono NL,Consolas:h9"
 	vim.g.neovide_position_animation_length = 0.1
 	vim.g.neovide_refresh_rate = refresh_rate
 	vim.g.neovide_scroll_animation_length = 0
 	vim.g.neovide_hide_mouse_when_typing = true
 	vim.g.neovide_cursor_short_animation_length = 0
-	vim.g.neovide_cursor_animation_length = (1.0 / refresh_rate) * 3
+	vim.g.neovide_cursor_animation_length = (1.0 / refresh_rate) * 2
 	vim.g.neovide_cursor_trail_size = 0.25
 end
 

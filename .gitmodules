@@ -7,9 +7,6 @@
 [submodule "plugin/vim-surround"]
 	path = pack/user/start/vim-surround
 	url = https://github.com/tpope/vim-surround
-[submodule "plugin/vim-fugitive"]
-	path = pack/user/start/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive
 [submodule "plugin/ctrlp.vim"]
 	path = pack/user/start/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim
